@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>Dictionary</title>
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  min-height: 100%;
+  background: #e3f2fd;
+}
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 70px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
+}
+nav .logo {
+  display: flex;
+  align-items: center;
+  margin: 0 24px;
+}
+.logo .menu-icon {
+  color: #333;
+  font-size: 24px;
+  margin-right: 14px;
+  cursor: pointer;
+}
+.logo .logo-name {
+  color: #333;
+  font-size: 22px;
+  font-weight: 500;
+  margin-left: 30px;
+}
+nav .sidebar {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  height: 100%;
+  width: 260px;
+  padding: 20px 0;
+  background-color: #fff;
+  box-shadow: 0 5px 1px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
+}
+nav.open .sidebar {
+  left: 0;
+}
+.sidebar .sidebar-content {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 30px 16px;
+}
+.sidebar-content .list {
+  list-style: none;
+}
+.list .nav-link {
+  display: flex;
+  align-items: center;
+  margin: 8px 0;
+  padding: 14px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+}
+.lists .nav-link:hover {
+  background-color: #4070f4;
+}
+.nav-link i {
+  margin-right: 14px;
+  font-size: 20px;
+  color: #707070;
+}
+.nav-link .link {
+  font-size: 16px;
+  color: #707070;
+  font-weight: 400;
+}
+.lists .nav-link:hover i,
+.lists .nav-link:hover .link {
+  color: #fff;
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  height: 1000vh;
+  width: 200%;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s ease;
+  background: rgba(0, 0, 0, 0.3);
+}
+nav.open ~ .overlay {
+  opacity: 1;
+  left: 260px;
+  pointer-events: auto;
+}
+
+.bottom-content a{
+    position: absolute;
+    bottom: 10px;
+    left: 25%;
+    color: #333;
+}
+           .form{
+            width: 90%;
+            max-width: 100%;
+            position: relative;
+            top: 80px;
+            left: 4%;
+        }
+          .form input{
+            margin:20px 0px ;
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+            padding: 12px 20px;
+        }
+        .icon{
+            display: none;
+        }
+        .active .icon{
+            position: absolute;
+            top: 30px;
+            left: 85%;
+            display: block;
+        }
+        :root{
+            --base-color:white;
+            --base-varient:#e8e9ed;
+            --text-color:#111528;
+            --secondary-color:#232738;
+            --primary-color:#3a435d;
+        }
+       
+        body{
+            min-height: 100vh;
+            background: var(--base-color);
+            color: var(--text-color);
+        }
+        .darkmode{
+            --base-color:#070b1d;
+            --base-varient:#101425;
+            --text-color:#fff;
+            --secondary-color:#a4a5b8;
+            --primary-color:#3a435d;
+        }
+        .darkmode nav{
+          background:#070b1d ;
+        }
+        .darkmode .sidebar{
+          background: var(--base-color);
+          
+        }
+      
+        #theme-switch{
+            background-color: var(--base-varient);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 10px;
+            left: 85%;
+            border: none;
+            outline: none;
+            background: none;
+           
+        }
+        #theme-switch i{
+            fill:var(--primary-color);
+            font-size: 30px;
+            font-size: 30px;
+            position: relative;
+            bottom: 5px;
+        }
+        #theme-switch i:last-child{
+            display: none;
+        }
+        .darkmode #theme-switch i:first-child{
+            display: none;
+        }
+        i{
+            font-size: 100px;
+        }
+        .darkmode #theme-switch i:last-child{
+            display: block;
+        }
+        
+        button i{
+            color:gray;
+        }
+        #theme-switch body{
+          color: white;
+        }
+        .darkmode .logo i{
+          color: white;
+        }
+        .darkmode .logo .logo-name{
+          color: white;
+        }
+        .open  .logo-name1{
+          opacity: 0;
+        }
+        .darkmode .lists .list{
+          color: white;
+          z-index: 3;
+        }
+        .darkmode .form .icon{
+          color: black;
+        }
+        .open ~ #favoriteWords{
+          display: none;
+        }
+        .fa-volume-up:hover{
+        color:blue;
+       }
+        #favoriteWords{
+            width: 94%;
+            height: 750px;
+            margin-top: 70px;
+            margin-left: 3%;
+            overflow: scroll;
+        }
+        #favoriteWords .entry{
+            border: 2px solid gray;
+          margin: 5px 0px;
+          padding-top: 3px;
+          padding-left: 5px;
+          width: 100%;
+          border-radius: 5px;
+        }
+        i{
+         margin-right: 5px;
+       }
+      .fa-heart:hover{
+        color: red;
+       }
+      ::-webkit-scrollbar{
+        width: 0;
+        height: 0;
+       }
+       .speaker-icon , .delete-icon , .favorite-icon{
+        cursor: pointer;
+       }
+       .entry{
+        cursor: pointer;
+       }
+      </style>
+  </head>
+  <body>
+    <nav>
+      <div class="logo">
+        <i class="fa fa-navicon menu-icon"></i>
+        <span class="logo-name">Favorites</span>
+      </div>
+      <div class="sidebar">
+        <div class="logo">
+          <i class="fa fa-navicon menu-icon"></i>
+          <span class="logo-name">Dictionary</span>
+        </div>
+
+        <div class="sidebar-content">
+          <ul class="lists">
+            <li class="list">
+              <a href="eng--mm.html" class="nav-link">
+                <i class="fa fa-search"></i>
+                <span class="link">Eng-Mm Dictionary</span>
+              </a>
+            </li>
+            <li class="list">
+              <a href="recent_searches.html" class="nav-link">
+                <i class="fa fa-history"></i>
+                <span class="link">Recent Searches</span>
+              </a>
+            </li>
+            <li class="list">
+              <a href="favorites.html" class="nav-link">
+                <i class="fa fa-heart"></i>
+                <span class="link">Favorites</span>
+              </a>
+            </li>
+            <li class="list">
+              <a href="about.html" class="nav-link">
+                <i class="fa fa-tasks"></i>
+                <span class="link">About</span>
+              </a>
+            </li>
+          </ul>
+
+          <div class="bottom-content">
+           
+            <li class="list">
+              <a href="#" class="nav-link">
+                <span class="link">Dictionary 1.0 <i class="fa fa-check-circle"></i></span>
+              </a>
+              
+            </li>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <section class="overlay"></section>
+    
+    <div class="container">
+        <div id="favoriteWords"></div>
+    </div>
+    
+    <script>
+        const navBar = document.querySelector("nav"),
+       menuBtns = document.querySelectorAll(".menu-icon"),
+       overlay = document.querySelector(".overlay");
+
+     menuBtns.forEach((menuBtn) => {
+       menuBtn.addEventListener("click", () => {
+         navBar.classList.toggle("open");
+       });
+     });
+
+     overlay.addEventListener("click", () => {
+       navBar.classList.remove("open");
+     });
+    </script>
+    <script>
+      function show(){
+          const username = document.querySelector(".username") ;
+          const icon = document.querySelector(".icon") ;
+
+          if(username <= 0)
+          document.body.classList.remove("active") ;
+          else 
+          document.body.classList.add("active") ;
+
+          icon.addEventListener("click" , ()=>{
+              document.querySelector(".username").value = "" ;
+              document.body.classList.remove("active") ;
+          });
+      }
+  </script>
+  <script>
+    //switch mode
+let darkmode = localStorage.getItem("darkmode") ;
+const themeSwitch = document.getElementById("theme-switch") ;
+
+const enableDarkmode = () => {
+  document.body.classList.add("darkmode") ;
+  localStorage.setItem("darkmode" , "active") ;
+}
+const disableDarkmode = () => {
+  document.body.classList.remove("darkmode") ;
+  localStorage.setItem("darkmode" , null) ;
+}
+if(darkmode === "active") enableDarkmode() ;
+themeSwitch.addEventListener("click" , ()=>{
+  darkmode = localStorage.getItem("darkmode") ;
+  darkmode !== "active" ? enableDarkmode() : disableDarkmode() ;
+});
+  </script>
+<script>
+const searchInput = document.getElementById('searchInput');
+const suggestionsDiv = document.getElementById('suggestions');
+const recentEntriesDiv = document.getElementById('recentEntries');
+const favoriteWordsDiv = document.getElementById('favoriteWords');
+let recentEntries = JSON.parse(localStorage.getItem('recentEntries')) || [];
+let favoriteWords = JSON.parse(localStorage.getItem('favoriteWords')) || [];
+// Function to display suggestions
+if (searchInput) {
+  searchInput.addEventListener('input', function () {
+      const query = searchInput.value.toLowerCase();
+      suggestionsDiv.innerHTML = '';
+      if (query) {
+          let suggestions = Object.keys(dictionary).filter(word => word.includes(query));
+          suggestions = suggestions.concat(
+              Object.values(dictionary).filter(def => def.includes(query)).map(def => Object.keys(dictionary).find(key => dictionary[key] === def))
+          );
+          suggestions = [...new Set(suggestions)];
+          suggestions.forEach(word => {
+              const suggestionDiv = document.createElement('div');
+              suggestionDiv.className = 'suggestion';
+              suggestionDiv.innerHTML = `
+                  <span><strong>${word}</strong>: ${dictionary[word]}</span>
+                  <span class="speaker-icon" onclick="speak('${word}')">🔊</span>
+                  <span class="favorite-icon ${favoriteWords.some(fav => fav.word === word) ? 'active' : ''}" onclick="toggleFavoriteWord('${word}', this)">⭐</span>
+              `;
+              suggestionDiv.addEventListener('click', () => {
+                  displaySelectedWord(word);
+                  addRecentEntry(word);
+              });
+              suggestionsDiv.appendChild(suggestionDiv);
+          });
+      }
+  });
+}
+//  to display the selected word
+function displaySelectedWord(word) {
+  suggestionsDiv.innerHTML = `<div class="one-click"><span class="one-tap"><strong>${word}</strong>: ${dictionary[word]}</span>
+                             <span class="speaker-icon" onclick="speak('${word}')">🔊</span>
+                             <span class="favorite-icon ${favoriteWords.some(fav => fav.word === word) ? 'active' : ''}" onclick="toggleFavoriteWord('${word}', this)">⭐</span>
+                             </div>`;
+}
+//  to add recent entry
+function addRecentEntry(word) {
+  recentEntries = [{ word: word, definition: dictionary[word] }, ...recentEntries.filter(entry => entry.word !== word)].slice(0, 5);
+  localStorage.setItem('recentEntries', JSON.stringify(recentEntries));
+  updateRecentEntries();
+}
+//  to delete recent entry
+function deleteRecentEntry(word) {
+  recentEntries = recentEntries.filter(entry => entry.word !== word);
+  localStorage.setItem('recentEntries', JSON.stringify(recentEntries));
+  updateRecentEntries();
+}
+//  to add or remove favorite word
+function toggleFavoriteWord(word, iconElement) {
+  const isFavorite = favoriteWords.some(entry => entry.word === word);
+  if (isFavorite) {
+      favoriteWords = favoriteWords.filter(entry => entry.word !== word);
+      iconElement.classList.remove('active');
+  } else {
+      favoriteWords.push({ word: word, definition: dictionary[word] });
+      iconElement.classList.add('active');
+  }
+  localStorage.setItem('favoriteWords', JSON.stringify(favoriteWords));
+  updateFavoriteWords();
+}
+//  to update recent entries display
+function updateRecentEntries() {
+  if (recentEntriesDiv) {
+      recentEntriesDiv.innerHTML = '';
+      recentEntries.forEach(entry => {
+          const recentEntryDiv = document.createElement('div');
+          recentEntryDiv.className = 'entry';
+          recentEntryDiv.innerHTML = `
+              <span><strong>${entry.word}</strong>: ${entry.definition}</span>
+              <span class="speaker-icon" onclick="speak('${entry.word}')">🔊</span>
+              <span class="delete-icon" onclick="deleteRecentEntry('${entry.word}')">🗑️</span>
+          `;
+          recentEntriesDiv.appendChild(recentEntryDiv);
+      });
+  }
+}
+//  to update favorite words display
+function updateFavoriteWords() {
+  if (favoriteWordsDiv) {
+      favoriteWordsDiv.innerHTML = '';
+      favoriteWords.forEach(entry => {
+          const favoriteWordDiv = document.createElement('div');
+          favoriteWordDiv.className = 'entry';
+          favoriteWordDiv.innerHTML = `
+              <span><strong>${entry.word}</strong>: ${entry.definition}</span>
+              <span class="speaker-icon" onclick="speak('${entry.word}')">🔊</span>
+              <span class="delete-icon" onclick="deleteFavoriteWord('${entry.word}')">🗑️</span>
+          `;
+          favoriteWordsDiv.appendChild(favoriteWordDiv);
+      });
+  }
+}
+//  to delete favorite word
+function deleteFavoriteWord(word) {
+  favoriteWords = favoriteWords.filter(entry => entry.word !== word);
+  localStorage.setItem('favoriteWords', JSON.stringify(favoriteWords));
+  updateFavoriteWords();
+}
+// to use speech synthesis
+function speak(word) {
+  const utterance = new SpeechSynthesisUtterance(word);
+  speechSynthesis.speak(utterance);
+}
+
+updateRecentEntries();
+updateFavoriteWords();
+   </script>
+ 
+  </body>
+</html>

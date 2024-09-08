@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dictionary App</title>
+    <style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    text-align: center;
+}
+
+#cover-page {
+    background:#070b1d;
+    color: white;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#cover-page h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+#cover-page p {
+    font-size: 24px;
+}
+@media (max-width:600px) {
+    #cover-page h1{
+       font-size: 20px;
+       margin-bottom: 200px;
+    }
+}
+    </style>
+</head>
+<body>
+    <div id="cover-page">
+        <h1>English-Myanmar Dictionary App</h1>
+    </div>
+    <script>
+        // Function to redirect to the main page after 5 seconds
+function redirectToMainPage() {
+    window.location.href = "eng--mm.html";  // Replace with the actual path to your main page
+}
+
+// Wait 5 seconds before redirecting
+setTimeout(redirectToMainPage, 4000);
+
+    </script>
+</body>
+</html>

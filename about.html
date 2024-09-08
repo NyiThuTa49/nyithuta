@@ -1,0 +1,387 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  min-height: 100%;
+  background: #e3f2fd;
+}
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 70px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
+}
+nav .logo {
+  display: flex;
+  align-items: center;
+  margin: 0 24px;
+}
+.logo .menu-icon {
+  color: #333;
+  font-size: 24px;
+  margin-right: 14px;
+  cursor: pointer;
+}
+.logo .logo-name {
+  color: #333;
+  font-size: 22px;
+  font-weight: 500;
+  margin-left: 30px;
+}
+nav .sidebar {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  height: 100%;
+  width: 260px;
+  padding: 20px 0;
+  background-color: #fff;
+  box-shadow: 0 5px 1px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
+}
+nav.open .sidebar {
+  left: 0;
+}
+.sidebar .sidebar-content {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 30px 16px;
+}
+.sidebar-content .list {
+  list-style: none;
+}
+.list .nav-link {
+  display: flex;
+  align-items: center;
+  margin: 8px 0;
+  padding: 14px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+}
+.lists .nav-link:hover {
+  background-color: #4070f4;
+}
+.nav-link i {
+  margin-right: 14px;
+  font-size: 20px;
+  color: #707070;
+}
+.nav-link .link {
+  font-size: 16px;
+  color: #707070;
+  font-weight: 400;
+}
+.lists .nav-link:hover i,
+.lists .nav-link:hover .link {
+  color: #fff;
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  height: 1000vh;
+  width: 200%;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s ease;
+  background: rgba(0, 0, 0, 0.3);
+}
+nav.open ~ .overlay {
+  opacity: 1;
+  left: 260px;
+  pointer-events: auto;
+}
+
+.bottom-content a{
+    position: absolute;
+    bottom: 10px;
+    left: 25%;
+    color: #333;
+}
+           .form{
+            width: 94%;
+            max-width: 100%;
+            position:fixed;
+            top: 45px;
+            left:  50px;
+
+        }
+          .form input{
+            margin:20px 0px ;
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+            padding: 12px 20px;
+            
+        }
+        .icon{
+            display: none;
+        }
+        .active .icon{
+            position: absolute;
+            top: 30px;
+            left: 85%;
+            display: block;
+        }
+        :root{
+            --base-color:white;
+            --base-varient:#e8e9ed;
+            --text-color:#111528;
+            --secondary-color:#232738;
+            --primary-color:#3a435d;
+        }
+       
+        body{
+            min-height: 100vh;
+            background: var(--base-color);
+            color: var(--text-color);
+        }
+        .darkmode{
+            --base-color:#070b1d;
+            --base-varient:#101425;
+            --text-color:#fff;
+            --secondary-color:#a4a5b8;
+            --primary-color:#3a435d;
+        }
+        .darkmode nav{
+          background:#070b1d ;
+        }
+        .darkmode .sidebar{
+          background: var(--base-color);
+          
+        }
+      
+        #theme-switch{
+            background-color: var(--base-varient);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 10px;
+            left: 85%;
+            border: none;
+            outline: none;
+            background: none;
+           
+        }
+        #theme-switch i{
+            fill:var(--primary-color);
+            font-size: 30px;
+            font-size: 30px;
+            position: relative;
+            bottom: 5px;
+        }
+        #theme-switch i:last-child{
+            display: none;
+        }
+        .darkmode #theme-switch i:first-child{
+            display: none;
+        }
+        i{
+            font-size: 100px;
+        }
+        .darkmode #theme-switch i:last-child{
+            display: block;
+        }
+        
+        button i{
+            color:gray;
+        }
+        #theme-switch body{
+          color: white;
+        }
+        .darkmode .logo i{
+          color: white;
+        }
+        .darkmode .logo .logo-name{
+          color: white;
+        }
+        .open  .logo-name1{
+          opacity: 0;
+        }
+#about-section {
+    margin: 60px auto;
+    width: 80%;
+    padding: 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+#about-section h2 {
+    color: #008cba;
+}
+#about-section h3 {
+    color: #005f6b;
+    margin-top: 20px;
+}
+#about-section p {
+    line-height: 1.6;
+}
+#about-section ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+#about-section ul li {
+    margin-bottom: 10px;
+}
+footer {
+    color:black;
+    text-align: center;
+    padding: 10px 0;
+    position:relative;
+    width: 100%;
+    bottom: 0;
+}
+.darkmode #about-section p{
+    color:white;
+}
+.darkmode #about-section ul li{
+    color:white;
+}
+.darkmode #about-section{
+    background: #11101d;
+}
+.darkmode footer{
+    color: white;
+}
+
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+          <i class="fa fa-navicon menu-icon"></i>
+          <span class="logo-name">About </span>
+        </div>
+        <div class="sidebar">
+          <div class="logo">
+            <i class="fa fa-navicon menu-icon"></i>
+            <span class="logo-name">Dictionary</span>
+          </div>
+  
+          <div class="sidebar-content">
+            <ul class="lists">
+              <li class="list">
+                <a href="eng--mm.html" class="nav-link">
+                  <i class="fa fa-search"></i>
+                  <span class="link">Eng-Mm Dictionary</span>
+                </a>
+              </li>
+              <li class="list">
+                <a href="recent_searches.html" class="nav-link">
+                  <i class="fa fa-history"></i>
+                  <span class="link">Recent Searches</span>
+                </a>
+              </li>
+              <li class="list">
+                <a href="favorites.html" class="nav-link">
+                  <i class="fa fa-heart"></i>
+                  <span class="link">Favorites</span>
+                </a>
+              </li>
+         
+              <li class="list">
+                <a href="about.html" class="nav-link">
+                  <i class="fa fa-tasks"></i>
+                  <span class="link">About</span>
+                </a>
+              </li>
+            </ul>
+  
+            <div class="bottom-content">
+             
+              <li class="list">
+                <a href="#" class="nav-link">
+                  <span class="link">Dictionary 1.0 <i class="fa fa-check-circle"></i></span>
+                </a>
+                
+              </li>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div class="text">About this website</div>
+      <section id="about-section">
+          <h2>About Us</h2>
+          <p>Welcome to the English-Myanmar Dictionary, your go-to resource for discovering word meanings, synonyms, antonyms, and more. Our mission is to provide a simple and effective platform for anyone looking to expand their vocabulary, improve their language skills, and find precise definitions.</p>
+  
+          <h3>What We Offer</h3>
+          <ul>
+              <li>Comprehensive word definitions.</li>
+              <li>Synonyms and antonyms for better word usage.</li>
+              <li>Speech synthesis to help with pronunciation.</li>
+              <li>Recent searches tracking to revisit previous words.</li>
+              <li>Favorites section to save words that matter to you.</li>
+          </ul>
+  
+          <h3>Our Mission</h3>
+          <p>At the English-Myanmar Dictionary, our mission is to empower users with the right words at the right time. Whether you're a student, writer, or just someone who loves words, our platform is designed to make language exploration easy and enjoyable.</p>
+  
+          <h3>Contact Us</h3>
+          <p>If you have any questions, feedback, or suggestions, feel free to reach out to us at <a href="">support@Eng-Mm_Dictionary.com</a>. We'd love to hear from you!</p>
+      </section>
+  
+      <!-- Footer Section -->
+      <footer>
+          <p>&copy; 2024 English-Myanmar Dictionary | All Rights Reserved</p>
+      </footer>
+  
+
+      <section class="overlay">
+        
+      </section>
+    <script>
+        const navBar = document.querySelector("nav"),
+       menuBtns = document.querySelectorAll(".menu-icon"),
+       overlay = document.querySelector(".overlay");
+
+     menuBtns.forEach((menuBtn) => {
+       menuBtn.addEventListener("click", () => {
+         navBar.classList.toggle("open");
+       });
+     });
+
+     overlay.addEventListener("click", () => {
+       navBar.classList.remove("open");
+     });
+    </script>
+  <script>
+    let darkmode = localStorage.getItem("darkmode") ;
+    const themeSwitch = document.getElementById("theme-switch") ;
+
+    const enableDarkmode = () => {
+        document.body.classList.add("darkmode") ;
+        localStorage.setItem("darkmode" , "active") ;
+    }
+    const disableDarkmode = () => {
+        document.body.classList.remove("darkmode") ;
+        localStorage.setItem("darkmode" , null) ;
+    }
+    if(darkmode === "active") enableDarkmode() ;
+    themeSwitch.addEventListener("click" , ()=>{
+        darkmode = localStorage.getItem("darkmode") ;
+        darkmode !== "active" ? enableDarkmode() : disableDarkmode() ;
+    });
+</script>
+</body>
+</html>
